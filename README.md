@@ -4,3 +4,10 @@ Simple DEMO for a workshop to demonstrate a simple example of how to integrate s
 ## Components
 * SmartContract that can be deployed on the Ethereum testnet Rinkeby
 * Website that connects to metamask and interacts with some funtions of the contract deployed
+
+## References
+* [Metamask](https://metamask.io/)
+* [Rinkeby (Stats, Explored, Faucet,...)](https://www.rinkeby.io/)
+* [Remix](https://remix.ethereum.org/)
+* [Ethereum Unit Converter](https://coinguides.org/ethereum-unit-converter-gwei-ether/)
+
