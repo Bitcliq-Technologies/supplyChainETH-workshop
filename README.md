@@ -7,7 +7,7 @@ Simple DEMO for a workshop to demonstrate a simple example of how to integrate s
 
 ## Workshop Main Topics
 * Blockchain advantages for a supply chain with diagrams
-* Description of a public and permissioned blockchain
+* Description of a public / permissioned / hydrid blockchain
 * Caracteristics of Ethereum and how it works on high level (diagrams and etherscan)
 * How to interact with Ethereum (testnet Rinkeby)
     * Participants are encouraged to install Metamask on their browser
@@ -27,6 +27,15 @@ Simple DEMO for a workshop to demonstrate a simple example of how to integrate s
 * Conclude
 
 NOTE: At any time, anyone can ask questions!
+
+## Interact with SmartContract
+* Go to [MyEthWallet](https://www.myetherwallet.com/interface/interact-with-contract)
+* Connect your Metamask (ex. MEW CX)
+* Contract/Interact with Contract
+* Input contract address
+* Input the ABI (Application Binary Interface) of the contract to interact with
+    * This repository has an example contract on the folder "contract" and his respective ABI
+* Now you can "Select an item" to choose the function of the contract to interact with
 
 ## References
 * [MyEthWallet](https://www.myetherwallet.com/interface/interact-with-contract)
