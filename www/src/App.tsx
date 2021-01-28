@@ -50,13 +50,14 @@ function App() {
   return (
     <div className="App" >
       <h1>Marketplace</h1>
-        <div style={{display: "flex", flexWrap: "wrap"}}>
-          {web3 && 
+        {web3 && 
             <Button variant="primary" onClick={async ()=> {
                 setShowCreateFishCatch(true);
               }}>Create FishCatch
             </Button>
           }
+          <br/>
+        <div style={{display: "flex", flexWrap: "wrap"}}>
           {web3 && fishCatches.length > 0 && 
             fishCatches.map((fishCatch: any, index: number) => {
               const fishCatchData = fishCatch[0];
