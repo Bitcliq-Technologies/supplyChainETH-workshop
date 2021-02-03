@@ -13,11 +13,6 @@ Simple DEMO for a workshop to demonstrate a simple example of how to integrate s
     * Participants are encouraged to install Metamask on their browser
     * Create a fresh account and explain the mnemonic phrase (public and private keys)
     * Participants will need to get testnet Ethereum and share their public addresses, we can send testnet Ethereum with each other so everybody has some testnet ETH to play with
-* Brief explanation of a smartcontract and how to interact with one
-    * Start remix and start coding...
-    * Deploy a simple contract to testnet (SimpleCounter?)
-    * Share the ABI of the contract with participants
-    * All participants can interact with the contract using [MyEthWallet](https://www.myetherwallet.com/interface/interact-with-contract)
 * Supply chain contract
     * Code, explain and deploy supplychain contract
     * All can interact with it

@@ -3,6 +3,7 @@ import contractInteractions from "./contractInteractions"
 import Web3 from 'web3';
 import { Button, Card, Form, Modal, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaPlusCircle } from "react-icons/fa";
 
 window.ethereum.enable();
 
@@ -11,6 +12,7 @@ function App() {
   const [contract, setContract] = useState<any>(null)
   const [fishCatches, setFishCatches] = useState<any>([]);
   const [showCreateFishCatch, setShowCreateFishCatch] = useState(false)
+  const [showAddTemperature, setShowAddTemperature] = useState<any>({show: false, data: null});
 
   const loadBlockChain = async () => {
     const web3 = new Web3(Web3.givenProvider)
@@ -71,9 +73,14 @@ function App() {
                     <Card.Text>
                       Created: {fishCatchData.createdTimestamp}<br />
                       Owner: {fishCatchData.owner}<br />
-                      {fishCatchTemperature.length > 0 && <div>
-                        Temp: {fishCatchTemperature.map((a: any) => a.value + ", ")}
-
+                      <Button onClick={() => setShowAddTemperature({show: true, data: index})}>
+                            <FaPlusCircle /> Temperature
+                        </Button>
+                      {fishCatchTemperature.length > 0 && 
+                      <div>
+                        {"  Temp: " + fishCatchTemperature.map((a: any) => {
+                          return (a.value + "º")
+                          })}
                       </div>} 
                     </Card.Text>
                       { 
@@ -91,6 +98,12 @@ function App() {
         <CreateFishCatchModal 
           showCreateFishCatch={showCreateFishCatch}
           setShowCreateFishCatch={setShowCreateFishCatch}
+          web3={web3}
+          contract={contract}
+        />
+         <AddTemperature 
+          showAddTemperature={showAddTemperature}
+          setShowAddTemperature={setShowAddTemperature}
           web3={web3}
           contract={contract}
         />
@@ -145,6 +158,45 @@ const CreateFishCatchModal = ({showCreateFishCatch, setShowCreateFishCatch, web3
                 }
           </Button>
           <Button variant="secondary" onClick={() => setShowCreateFishCatch(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+  )
+}
+    
+//@ts-ignore
+const AddTemperature = ({showAddTemperature, setShowAddTemperature, web3, contract}) => {
+  const [temp, setTemp] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  return (
+      <Modal show={showAddTemperature.show} onHide={() => setShowAddTemperature({show: false})}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Temperature</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Form>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Temperature (int only)</Form.Label>
+            <Form.Control type="text" placeholder="" value={temp} onChange={(e) => setTemp(e.target.value)} />
+          </Form.Group>
+        </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" disabled={loading} onClick={async ()=> {
+                setLoading(true)
+                const account = await web3.eth.getAccounts()
+                await contract.methods.insertTemperature(showAddTemperature.data,parseInt(temp)).send({from: account[0]});
+                setShowAddTemperature({show: false})
+                setTemp('')
+                setLoading(false)
+              }}>
+                {
+                  loading ? <Spinner animation={"border"}/> : "Add Temperature"
+                }
+          </Button>
+          <Button variant="secondary" onClick={() => setShowAddTemperature({show: false})}>
             Close
           </Button>
         </Modal.Footer>
