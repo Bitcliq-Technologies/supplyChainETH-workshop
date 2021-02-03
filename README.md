@@ -18,12 +18,12 @@ Simple DEMO for a workshop to demonstrate a simple example of how to integrate s
     * All can interact with it
         * Participants can create catches, insert temperatures and buy catches from each other with ETH.
     * Show the website
-    * Do a new contract with some rules that prevent some actions to some participants (To show the example of multiple organizations that dont trust each other and use the blockchain as the base of trust)
+    * Bonus: Do a new contract with some rules that prevent some actions to some participants (To show the example of multiple organizations that dont trust each other and use the blockchain as the base of trust)
 * Conclude
 
 NOTE: At any time, anyone can ask questions!
 
-## Interact with SmartContract
+## Interact with SmartContract without the website
 * Go to [MyEthWallet](https://www.myetherwallet.com/interface/interact-with-contract)
 * Connect your Metamask (ex. MEW CX)
 * Contract/Interact with Contract
