@@ -5,7 +5,6 @@ import { Button, Card, Form, Modal, Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaPlusCircle } from "react-icons/fa";
 
-window.ethereum.enable();
 
 function App() { 
   const [web3, setWeb3] = useState<Web3|null>(null)
@@ -21,6 +20,12 @@ function App() {
   }
 
   useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum.enable();
+    } else {
+      alert("Please install metamask!");
+    }
+
     loadBlockChain();
   },[])
 
@@ -179,7 +184,7 @@ const AddTemperature = ({showAddTemperature, setShowAddTemperature, web3, contra
         <Form>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Temperature (int only)</Form.Label>
-            <Form.Control type="text" placeholder="" value={temp} onChange={(e) => setTemp(e.target.value)} />
+            <Form.Control type="number" placeholder="" value={temp} onChange={(e) => setTemp(e.target.value)} />
           </Form.Group>
         </Form>
         </Modal.Body>

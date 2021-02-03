@@ -33,6 +33,7 @@ NOTE: At any time, anyone can ask questions!
 * Now you can "Select an item" to choose the function of the contract to interact with
 
 ## References
+* [Mastering Ethereum](https://github.com/ethereumbook/ethereumbook)
 * [MyEthWallet](https://www.myetherwallet.com/interface/interact-with-contract)
 * [Metamask](https://metamask.io/)
 * [Rinkeby (Stats, Explored, Faucet,...)](https://www.rinkeby.io/)
