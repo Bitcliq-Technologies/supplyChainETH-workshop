@@ -97,7 +97,11 @@ function App() {
                             onClick={async ()=>{
                             const account = await web3.eth.getAccounts()
                             setBuyLoading(index)
-                            await contract.methods.buyFishCatch(index).send({from: account[0], value: fishCatchData.price});
+                            try {
+                              await contract.methods.buyFishCatch(index).send({from: account[0], value: fishCatchData.price});
+                            } catch (e) {
+                              setBuyLoading(null)
+                            }
                             setBuyLoading(null)
                           }}>
                             {buyLoading === index ? <Spinner animation={"border"}/>  : "Buy"}
@@ -157,8 +161,12 @@ const CreateFishCatchModal = ({showCreateFishCatch, setShowCreateFishCatch, web3
         <Modal.Footer>
           <Button variant="primary" disabled={loading} onClick={async ()=> {
                 setLoading(true)
-                const account = await web3.eth.getAccounts()
-                await contract.methods.createFishCatch(specie,size,(parseFloat(price)*1e18).toString()).send({from: account[0]});
+                try {
+                  const account = await web3.eth.getAccounts()
+                  await contract.methods.createFishCatch(specie,size,(parseFloat(price)*1e18).toString()).send({from: account[0]});
+                } catch (e) {
+                  setLoading(false)
+                }
                 setShowCreateFishCatch(false)
                 setSpecie('')
                 setSize('')
