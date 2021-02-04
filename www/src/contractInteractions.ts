@@ -1,6 +1,6 @@
 import Web3 from 'web3';
 
-const CONTRACT_ADDRESS = "0xa10EB1f4dB2c0f0c77D11C1F82D87f323e3Afb35"
+const CONTRACT_ADDRESS = "0x2373a296e059819bddb9311be5d80d12f39f357e"
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (web3: Web3) => {
@@ -98,7 +98,7 @@ const abi = [
 					},
 					{
 						"internalType": "bool",
-						"name": "isBougth",
+						"name": "isBought",
 						"type": "bool"
 					},
 					{
@@ -119,9 +119,9 @@ const abi = [
 						"type": "uint256"
 					},
 					{
-						"internalType": "uint256",
+						"internalType": "int256",
 						"name": "value",
-						"type": "uint256"
+						"type": "int256"
 					}
 				],
 				"internalType": "struct SupplyChainExample.FishCatchTemperature[]",
@@ -140,9 +140,9 @@ const abi = [
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "_temperature",
-				"type": "uint256"
+				"type": "int256"
 			}
 		],
 		"name": "insertTemperature",

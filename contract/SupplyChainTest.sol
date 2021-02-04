@@ -5,7 +5,7 @@ pragma experimental ABIEncoderV2;
 contract SupplyChainExample {
     struct FishCatchTemperature {
         uint256 createdTimestamp; // 134681341 => 27/01/2021 - 10:22:00
-        uint value; // 250 => 2.50º
+        int value; // 250 => 2.50º
     }
     
     struct FishCatch {
@@ -14,7 +14,7 @@ contract SupplyChainExample {
         uint256 createdTimestamp; // 134681341 => 27/01/2021 - 10:22:00
         uint256 price; // ETH has 18 decimal places so if a fish costs 1 ETH it needs to be 1e18 here
         address payable owner; // 0x3DD7fAEb17ff23D74359EA0827D35f549c82fEA4
-        bool isBougth; // true || false
+        bool isBought; // true || false
         uint256 boughtTimestamp; // 134681341 => 27/01/2021 - 10:22:00
     }
     
@@ -30,7 +30,7 @@ contract SupplyChainExample {
             createdTimestamp: block.timestamp,
             price: _price,
             owner: msg.sender,
-            isBougth: false,
+            isBought: false,
             boughtTimestamp: 0
         });
         
@@ -38,7 +38,7 @@ contract SupplyChainExample {
         currentFishCatchCount += 1;
     }
     
-    function insertTemperature(uint _fishCatchID, uint _temperature) public {
+    function insertTemperature(uint _fishCatchID, int _temperature) public {
         FishCatchTemperature memory _fishCatchTemperature = FishCatchTemperature(
         {
             createdTimestamp: block.timestamp,
@@ -49,11 +49,11 @@ contract SupplyChainExample {
     }
     
     function buyFishCatch(uint _fishCatchID) public payable {
-        require(fishCatches[_fishCatchID].isBougth == false, "Fishcatch already bought!");
+        require(fishCatches[_fishCatchID].isBought == false, "Fishcatch already bought!");
         require(fishCatches[_fishCatchID].price == msg.value, "Sent funds do not match this fishcatch price!");
         fishCatches[_fishCatchID].owner.transfer(fishCatches[_fishCatchID].price);
         fishCatches[_fishCatchID].owner = msg.sender;
-        fishCatches[_fishCatchID].isBougth = true;
+        fishCatches[_fishCatchID].isBought = true;
         fishCatches[_fishCatchID].boughtTimestamp = block.timestamp;
     }
     

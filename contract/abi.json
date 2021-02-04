@@ -87,7 +87,7 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "isBougth",
+						"name": "isBought",
 						"type": "bool"
 					},
 					{
@@ -108,9 +108,9 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "uint256",
+						"internalType": "int256",
 						"name": "value",
-						"type": "uint256"
+						"type": "int256"
 					}
 				],
 				"internalType": "struct SupplyChainExample.FishCatchTemperature[]",
@@ -129,9 +129,9 @@
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "_temperature",
-				"type": "uint256"
+				"type": "int256"
 			}
 		],
 		"name": "insertTemperature",

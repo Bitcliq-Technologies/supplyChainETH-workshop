@@ -11,6 +11,7 @@ function App() {
   const [contract, setContract] = useState<any>(null)
   const [fishCatches, setFishCatches] = useState<any>([]);
   const [showCreateFishCatch, setShowCreateFishCatch] = useState(false)
+  const [buyLoading, setBuyLoading] = useState<any>(null)
   const [showAddTemperature, setShowAddTemperature] = useState<any>({show: false, data: null});
 
   const loadBlockChain = async () => {
@@ -89,12 +90,18 @@ function App() {
                       </div>} 
                     </Card.Text>
                       { 
-                        fishCatchData.isBougth ? 
+                        fishCatchData.isBought ? 
                           <Button variant="secondary" disabled> Bought </Button> : 
-                          <Button variant="success" onClick={async ()=>{
+                          <Button variant="success" 
+                            disabled={buyLoading === index}
+                            onClick={async ()=>{
                             const account = await web3.eth.getAccounts()
+                            setBuyLoading(index)
                             await contract.methods.buyFishCatch(index).send({from: account[0], value: fishCatchData.price});
-                          }}>Buy</Button>}
+                            setBuyLoading(null)
+                          }}>
+                            {buyLoading === index ? <Spinner animation={"border"}/>  : "Buy"}
+                          </Button>}
                   </Card.Body>
                 </Card>
               )
