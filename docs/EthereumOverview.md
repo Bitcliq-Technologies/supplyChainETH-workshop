@@ -1,7 +1,7 @@
 # Ethereum Overview
 
 ## What is Ethereum?
-Ethereum is an open source, globally decentralized computing infrastructure that executes programs called smart contracts. It uses a blockchain to synchronize and store the system’s state changes, along with a cryptocurrency called ether to meter and constrain execution resource costs.
+Ethereum is an open source, globally decentralized computing infrastructure that executes programs called smart contracts. It uses a blockchain to synchronize and store the system’s state changes, along with a cryptocurrency called ether.
 
 The Ethereum platform enables developers to build powerful decentralized applications with built-in economic functions. While providing high availability, auditability, transparency, and neutrality, it also reduces or eliminates censorship and reduces certain counterparty risks.
 
@@ -12,8 +12,8 @@ Unlike Bitcoin, which has a very limited scripting language, Ethereum is designe
 * Consensus rules: Consensus rules are defined in the reference specification (Yellow Paper);
 * Transactions: Are network messages that include (among other things) a sender, recipient, value, and data payload.
 * State machine: State transitions are processed by the Ethereum Virtual Machine (EVM). EVM programs, called "smart contracts," are written in high-level languages (e.g. Solidity) and compiled to bytecode for execution on the EVM.
-* Data structures: Ethereum’s state is stored locally on each node as a database (ex. LevelDB), which contains the transactions and system state in a serialized hashed data structure called a Merkle Patricia Tree.
-* Consensus algorithm: Ethereum uses Bitcoin’s consensus model, Nakamoto Consensus, which uses sequential single-signature blocks, weighted in importance by PoW (Proff of Work) to determine the longest chain and therefore the current state. Currently, Ethereum is transitioning to PoS (Proff of Stake) weighted voting system for Ethereum version 2.0;
+* Data structures: Ethereum’s state is stored locally on each node as a database (ex. LevelDB), which contains the transactions and system state.
+* Consensus algorithm: Ethereum uses Bitcoin’s consensus model, Nakamoto Consensus, which uses sequential single-signature blocks, weighted in importance by PoW (Proof of Work) to determine the longest chain and therefore the current state. Currently, Ethereum is transitioning to PoS (Proof of Stake) weighted voting system for Ethereum version 2.0;
 * Economic security: Ethereum currently uses a PoW algorithm called Ethash, but as mentioned before, PoS will be used on the Ethereum version 2.0;
 * Clients: Client software that runs on the nodes.
 
